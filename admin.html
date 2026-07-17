@@ -58,7 +58,7 @@
     <form class="gate-card" id="gateForm">
       <img src="images/logo.png" alt="Sellvora" />
       <h1>Espace admin</h1>
-      <input type="password" id="gatePass" placeholder="Code d'accès" autocomplete="current-password" />
+      <input type="password" id="gatePass" placeholder="Code d'accès" autocomplete="off" autocapitalize="none" spellcheck="false" />
       <button type="submit" class="btn btn--primary">Entrer</button>
       <p class="gate-err" id="gateErr">Code incorrect.</p>
     </form>
@@ -134,8 +134,8 @@
 
       gateForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        var val = document.getElementById("gatePass").value;
-        if (val === ACCESS_CODE) {
+        var val = document.getElementById("gatePass").value.trim().toLowerCase();
+        if (val === ACCESS_CODE.toLowerCase()) {
           sessionStorage.setItem("sellvora_admin", "1");
           unlock();
         } else {
