@@ -13,11 +13,11 @@
   --paper-soft: #f6f8fb;        /* fond de section alternée */
   --surface: #ffffff;
   --surface-hover: #f6f8fb;
-  --blue: #2563eb;
-  --blue-deep: #1d4ed8;
-  --blue-soft: #eaf1fe;
-  --blue-line: #2456c9;         /* accent bleu lisible sur fond clair */
-  --blue-border: #c9d8f8;
+  --blue: #dc2626;              /* accent principal — rouge */
+  --blue-deep: #b91c1c;
+  --blue-soft: #fdecec;
+  --blue-line: #b42121;         /* accent rouge lisible sur fond clair */
+  --blue-border: #f2c4c4;
   --green: #047857;             /* statistiques positives uniquement */
   --green-soft: #e8f6f0;
   --border: #e7e9ef;
@@ -55,7 +55,7 @@
   --radius-pill: 999px;
   --shadow-sm: 0 1px 2px rgba(20, 22, 26, 0.05), 0 4px 14px rgba(20, 22, 26, 0.05);
   --shadow-md: 0 2px 6px rgba(20, 22, 26, 0.06), 0 18px 44px rgba(20, 22, 26, 0.09);
-  --glow-blue: 0 8px 28px rgba(37, 99, 235, 0.28);
+  --glow-blue: 0 8px 28px rgba(220, 38, 38, 0.28);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --dur: 0.55s;
 }
@@ -187,8 +187,11 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: -0.03em;
+  display: inline-flex;
+  align-items: center;
 }
 .nav__logo span { color: var(--blue); }
+.nav__logo img { height: 3.6rem; width: auto; }
 .nav__links { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.2rem); }
 .nav__links a {
   font-size: var(--text-sm);
@@ -247,7 +250,7 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   width: 58rem;
   height: 58rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 62%);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.1), transparent 62%);
   pointer-events: none;
 }
 .hero::after {
@@ -258,7 +261,7 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   width: 50rem;
   height: 50rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.06), transparent 60%);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.06), transparent 60%);
   pointer-events: none;
 }
 .hero__grid {
@@ -318,8 +321,8 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   position: absolute;
   inset: 8% 4%;
   border-radius: var(--radius-lg);
-  background-image: linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(220, 38, 38, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 38, 38, 0.06) 1px, transparent 1px);
   background-size: 34px 34px;
   mask-image: radial-gradient(circle at 55% 45%, #000 30%, transparent 75%);
   -webkit-mask-image: radial-gradient(circle at 55% 45%, #000 30%, transparent 75%);
@@ -546,7 +549,7 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   width: 40rem;
   height: 40rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 62%);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.1), transparent 62%);
   pointer-events: none;
 }
 .exclusive__grid {
@@ -628,6 +631,8 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   object-fit: cover;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
+  background: #fff;
+  opacity: 0.85;
 }
 .founder__badge {
   position: absolute;
@@ -744,8 +749,8 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
 .pack--featured {
   position: relative;
   background: linear-gradient(160deg, var(--blue-soft), #ffffff 60%);
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 12px 44px rgba(37, 99, 235, 0.12);
+  border-color: rgba(220, 38, 38, 0.4);
+  box-shadow: 0 12px 44px rgba(220, 38, 38, 0.12);
 }
 .pack--featured:hover { box-shadow: var(--glow-blue); border-color: var(--blue); }
 .pack__badge {
@@ -907,7 +912,7 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   width: 54rem;
   height: 38rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.35), transparent 65%);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.35), transparent 65%);
   pointer-events: none;
 }
 .cta-final .container { position: relative; }
@@ -964,7 +969,7 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   width: 48rem;
   height: 48rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.07), transparent 62%);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.07), transparent 62%);
   pointer-events: none;
 }
 .apply-hero { position: relative; padding-top: clamp(7rem, 5.5rem + 4vw, 9rem); padding-bottom: var(--space-8); text-align: center; }
@@ -1051,7 +1056,7 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
   outline: none;
   border-color: var(--blue);
   background: #fff;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12);
 }
 .field.has-error input,
 .field.has-error select,
@@ -1099,6 +1104,11 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
 .choice:has(input:checked) { border-color: var(--blue); background: var(--blue-soft); }
 .choice input:focus-visible + i { outline: 3px solid var(--blue); outline-offset: 2px; }
 
+.choice--pack span { display: flex; flex-direction: column; gap: 0.15rem; }
+.choice--pack strong { font-weight: 700; }
+.choice--pack em { font-style: normal; font-size: var(--text-xs); color: var(--ink-faint); }
+.pack-choices .error { display: none; }
+
 .char-count { font-size: var(--text-xs); color: var(--ink-faint); text-align: right; margin-top: 0.3rem; }
 .char-count.is-ok { color: var(--green); }
 
@@ -1138,6 +1148,82 @@ h3 { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.01em; }
 .legal-page p, .legal-page li { color: var(--ink-soft); max-width: 70ch; font-size: var(--text-sm); }
 .legal-page p + p { margin-top: var(--space-3); }
 .legal-page ul { list-style: disc; padding-left: 1.4rem; display: grid; gap: 0.4rem; margin-block: var(--space-3); }
+
+/* ---------- Barre de progression ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 200;
+  pointer-events: none;
+}
+
+/* ---------- Effet brillance sur les cartes packs ---------- */
+.pack { position: relative; overflow: hidden; }
+.pack::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s var(--ease);
+  pointer-events: none;
+}
+.pack:hover::before { left: 130%; }
+.pack--featured::before { background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.75), transparent); }
+
+/* ---------- Pulsation du CTA principal hero ---------- */
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35); }
+  55% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
+}
+.hero__actions .btn--primary { animation: ctaPulse 2.6s var(--ease) infinite; }
+.hero__actions .btn--primary:hover { animation: none; }
+
+/* ---------- Flottement doux du badge hero ---------- */
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.hero__badge { animation: badgeFloat 4.5s ease-in-out infinite; }
+
+/* ---------- Icônes des features : rebond au survol ---------- */
+@keyframes iconPop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.18) rotate(-4deg); }
+  100% { transform: scale(1.08); }
+}
+.feature:hover .feature__icon { animation: iconPop 0.45s var(--ease) forwards; }
+
+/* ---------- Soulignement animé des titres de section ---------- */
+.section-head h2 {
+  position: relative;
+  display: inline-block;
+}
+.section-head h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 3.5rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease) 0.25s;
+}
+.section-head--center h2::after { left: 50%; margin-left: -1.75rem; transform-origin: center; }
+.reveal.is-visible h2::after,
+.section-head h2.is-visible::after { transform: scaleX(1); }
 
 /* ---------- Animations d'apparition ---------- */
 .reveal {

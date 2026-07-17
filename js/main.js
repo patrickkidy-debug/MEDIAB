@@ -58,6 +58,78 @@
     });
   }
 
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --- Barre de progression de lecture --- */
+  var progress = document.createElement("div");
+  progress.className = "scroll-progress";
+  progress.setAttribute("aria-hidden", "true");
+  document.body.appendChild(progress);
+  var updateProgress = function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = "scaleX(" + (h > 0 ? window.scrollY / h : 0) + ")";
+  };
+  updateProgress();
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress, { passive: true });
+
+  /* --- Compteurs animés (bandeau statistiques) --- */
+  var counters = document.querySelectorAll("[data-count]");
+  function formatValue(el, value) {
+    var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    return prefix + value.toFixed(decimals).replace(".", ",") + suffix;
+  }
+  function animateCounter(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    if (isNaN(target)) return;
+    if (reducedMotion) {
+      el.textContent = formatValue(el, target);
+      return;
+    }
+    var duration = 1400;
+    var start = null;
+    function tick(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+      el.textContent = formatValue(el, target * eased);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if ("IntersectionObserver" in window && counters.length) {
+    var cio = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            cio.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      el.textContent = formatValue(el, parseFloat(el.getAttribute("data-count")));
+    });
+  }
+
+  /* --- Parallaxe légère sur l'illustration hero --- */
+  var heroArt = document.querySelector(".hero__art");
+  if (heroArt && !reducedMotion) {
+    var parallax = function () {
+      var y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroArt.style.transform = "translateY(" + y * 0.06 + "px)";
+      }
+    };
+    window.addEventListener("scroll", parallax, { passive: true });
+  }
+
   /* --- FAQ accordéon --- */
   var faqItems = document.querySelectorAll(".faq__item");
   faqItems.forEach(function (item) {

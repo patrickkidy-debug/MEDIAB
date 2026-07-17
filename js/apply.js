@@ -14,10 +14,9 @@
   /* --- Pré-sélection du pack via ?pack= --- */
   var params = new URLSearchParams(window.location.search);
   var packParam = params.get("pack");
-  var packSelect = document.getElementById("pack");
-  if (packParam && packSelect) {
-    var opt = packSelect.querySelector('option[value="' + packParam + '"]');
-    if (opt) packSelect.value = packParam;
+  if (packParam) {
+    var packRadio = form.querySelector('input[name="pack"][value="' + packParam + '"]');
+    if (packRadio) packRadio.checked = true;
   }
 
   /* --- Affichage d'une étape --- */
@@ -67,6 +66,13 @@
       if (objErr) objErr.style.display = checked ? "none" : "block";
       if (!checked && !firstInvalid) firstInvalid = step.querySelector('input[name="objectifs"]');
       valid = valid && checked > 0;
+
+      // choix du pack obligatoire
+      var packChecked = step.querySelectorAll('input[name="pack"]:checked').length;
+      var packErr = document.getElementById("packErr");
+      if (packErr) packErr.style.display = packChecked ? "none" : "block";
+      if (!packChecked && !firstInvalid) firstInvalid = step.querySelector('input[name="pack"]');
+      valid = valid && packChecked > 0;
     }
 
     // étape 4 : consentement
@@ -123,7 +129,20 @@
     }
   });
 
-  /* --- Soumission --- */
+  /* --- Soumission : envoi réel par email via FormSubmit --- */
+  var ENDPOINT = "https://formsubmit.co/ajax/patrickkidy@gmail.com";
+
+  function showConfirmation() {
+    form.hidden = true;
+    var stepper = document.getElementById("stepper");
+    if (stepper) stepper.hidden = true;
+    var confirmation = document.getElementById("confirmation");
+    if (confirmation) {
+      confirmation.hidden = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!validateStep(current)) return;
@@ -134,16 +153,33 @@
       submitBtn.textContent = "Envoi en cours…";
     }
 
-    // Simulation d'envoi. Brancher ici un backend / service de formulaire.
-    setTimeout(function () {
-      form.hidden = true;
-      var stepper = document.getElementById("stepper");
-      if (stepper) stepper.hidden = true;
-      var confirmation = document.getElementById("confirmation");
-      if (confirmation) {
-        confirmation.hidden = false;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    }, 900);
+    var data = new FormData(form);
+    var entreprise = data.get("entreprise") || "";
+    data.append("_subject", "Nouvelle candidature Sellvora — " + entreprise);
+    data.append("_template", "table");
+    data.append("_captcha", "false");
+
+    fetch(ENDPOINT, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" }
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function () {
+        showConfirmation();
+      })
+      .catch(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Envoyer ma candidature";
+        }
+        alert(
+          "L'envoi a échoué. Vérifiez votre connexion internet puis réessayez.\n" +
+          "Si le problème persiste, contactez-nous directement sur WhatsApp."
+        );
+      });
   });
 })();
