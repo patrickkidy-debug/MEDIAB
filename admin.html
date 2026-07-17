@@ -52,20 +52,9 @@
 </head>
 <body>
 
-  <!-- Porte d'entrée (protection légère côté navigateur : dissuasif, pas un coffre-fort.
-       Les données affichées viennent de services déjà protégés par leurs propres comptes.) -->
-  <div id="gate">
-    <form class="gate-card" id="gateForm">
-      <img src="images/logo.png" alt="Sellvora" />
-      <h1>Espace admin</h1>
-      <input type="password" id="gatePass" placeholder="Code d'accès" autocomplete="off" autocapitalize="none" spellcheck="false" />
-      <button type="submit" class="btn btn--primary">Entrer</button>
-      <p class="gate-err" id="gateErr">Code incorrect.</p>
-    </form>
-  </div>
-
-  <!-- Tableau de bord -->
-  <div id="dashboard" hidden>
+  <!-- Tableau de bord (pas de porte d'accès : la page n'est pas indexée et ne
+       contient aucune donnée sensible — Umami/Gmail/GitHub ont leurs propres comptes.) -->
+  <div id="dashboard">
     <div class="admin-wrap">
       <div class="admin-head">
         <img src="images/logo.png" alt="Sellvora" />
@@ -109,39 +98,15 @@
     (function () {
       "use strict";
 
-      /* ===== À CONFIGURER ===== */
-      var ACCESS_CODE = "sellvora2026";   /* ← change ce code d'accès */
       var UMAMI_SHARE_URL = "https://cloud.umami.is/share/SBL07lm5vmw3SA4Z";
 
-      var gate = document.getElementById("gate");
-      var dashboard = document.getElementById("dashboard");
-      var gateForm = document.getElementById("gateForm");
-      var gateErr = document.getElementById("gateErr");
-
-      function unlock() {
-        gate.hidden = true;
-        dashboard.hidden = false;
-        var frame = document.getElementById("umamiFrame");
-        var note = document.getElementById("setupNote");
-        if (UMAMI_SHARE_URL) {
-          frame.src = UMAMI_SHARE_URL;
-          frame.hidden = false;
-          if (note) note.hidden = true;
-        }
+      var frame = document.getElementById("umamiFrame");
+      var note = document.getElementById("setupNote");
+      if (UMAMI_SHARE_URL && frame) {
+        frame.src = UMAMI_SHARE_URL;
+        frame.hidden = false;
+        if (note) note.hidden = true;
       }
-
-      if (sessionStorage.getItem("sellvora_admin") === "1") unlock();
-
-      gateForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var val = document.getElementById("gatePass").value.trim().toLowerCase();
-        if (val === ACCESS_CODE.toLowerCase()) {
-          sessionStorage.setItem("sellvora_admin", "1");
-          unlock();
-        } else {
-          gateErr.style.display = "block";
-        }
-      });
     })();
   </script>
 </body>
