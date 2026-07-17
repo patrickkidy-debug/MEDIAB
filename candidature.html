@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Candidature — Sellvora</title>
+  <meta name="description" content="Postulez pour devenir client de Sellvora. Chaque dossier est étudié avec attention. Nous sélectionnons uniquement les entreprises avec lesquelles nous pouvons construire une collaboration durable." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="apply-page">
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav is-scrolled" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Sellvora — accueil">Sell<span>vora</span></a>
+      <div class="nav__cta">
+        <a href="index.html" class="btn btn--ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.1em;height:1.1em"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          Retour au site
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container container--narrow">
+
+      <!-- En-tête -->
+      <section class="apply-hero">
+        <span class="eyebrow" style="justify-content:center">Dossier de candidature</span>
+        <h1>Postuler pour devenir client</h1>
+        <p>Nous étudions chaque dossier avec attention. Prenez le temps de bien présenter votre entreprise : c'est ce qui nous permet de décider si nous pouvons réellement vous accompagner.</p>
+      </section>
+
+      <!-- Indicateur d'étapes -->
+      <div class="stepper" id="stepper">
+        <div class="stepper__item is-active" data-step="1"><i>1</i> Vous</div>
+        <div class="stepper__item" data-step="2"><i>2</i> Activité</div>
+        <div class="stepper__item" data-step="3"><i>3</i> Objectifs</div>
+        <div class="stepper__item" data-step="4"><i>4</i> Présentation</div>
+      </div>
+
+      <!-- Formulaire -->
+      <form class="form-card" id="applyForm" novalidate>
+
+        <!-- ÉTAPE 1 — INFORMATIONS PERSONNELLES -->
+        <div class="form-step is-active" data-step="1">
+          <h2>Informations personnelles</h2>
+          <p class="form-intro">Comment vous joindre et identifier votre entreprise.</p>
+          <div class="form-grid">
+            <div class="field">
+              <label for="nom">Nom <span class="req">*</span></label>
+              <input type="text" id="nom" name="nom" autocomplete="family-name" required />
+              <span class="error">Veuillez indiquer votre nom.</span>
+            </div>
+            <div class="field">
+              <label for="prenom">Prénom <span class="req">*</span></label>
+              <input type="text" id="prenom" name="prenom" autocomplete="given-name" required />
+              <span class="error">Veuillez indiquer votre prénom.</span>
+            </div>
+            <div class="field">
+              <label for="entreprise">Entreprise <span class="req">*</span></label>
+              <input type="text" id="entreprise" name="entreprise" autocomplete="organization" required />
+              <span class="error">Veuillez indiquer le nom de votre entreprise.</span>
+            </div>
+            <div class="field">
+              <label for="pays">Pays <span class="req">*</span></label>
+              <input type="text" id="pays" name="pays" autocomplete="country-name" required />
+              <span class="error">Veuillez indiquer votre pays.</span>
+            </div>
+            <div class="field">
+              <label for="whatsapp">WhatsApp <span class="req">*</span></label>
+              <input type="tel" id="whatsapp" name="whatsapp" inputmode="tel" placeholder="+225 ..." autocomplete="tel" required />
+              <span class="hint">Numéro sur lequel nous vous contacterons si votre dossier est retenu.</span>
+              <span class="error">Veuillez indiquer un numéro WhatsApp valide.</span>
+            </div>
+            <div class="field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" inputmode="email" autocomplete="email" required />
+              <span class="error">Veuillez indiquer une adresse email valide.</span>
+            </div>
+            <div class="field">
+              <label for="site">Site internet</label>
+              <input type="url" id="site" name="site" inputmode="url" placeholder="https://" />
+            </div>
+            <div class="field">
+              <label for="facebook">Facebook</label>
+              <input type="text" id="facebook" name="facebook" placeholder="Page ou profil" />
+            </div>
+            <div class="field field--full">
+              <label for="instagram">Instagram</label>
+              <input type="text" id="instagram" name="instagram" placeholder="@votrecompte" />
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn--ghost" data-prev hidden>Précédent</button>
+            <button type="button" class="btn btn--primary" data-next>Continuer
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.1em;height:1.1em"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 — ACTIVITÉ -->
+        <div class="form-step" data-step="2">
+          <h2>Votre activité</h2>
+          <p class="form-intro">Pour comprendre votre modèle et votre maturité.</p>
+          <div class="form-grid">
+            <div class="field field--full">
+              <label for="produits">Que vendez-vous ? <span class="req">*</span></label>
+              <input type="text" id="produits" name="produits" required />
+              <span class="error">Veuillez décrire ce que vous vendez.</span>
+            </div>
+            <div class="field">
+              <label for="anciennete">Depuis combien de temps ? <span class="req">*</span></label>
+              <input type="text" id="anciennete" name="anciennete" placeholder="Ex. 2 ans" required />
+              <span class="error">Champ requis.</span>
+            </div>
+            <div class="field">
+              <label for="prix_moyen">Quel est votre prix moyen ? <span class="req">*</span></label>
+              <input type="text" id="prix_moyen" name="prix_moyen" placeholder="Ex. 15 000 FCFA" required />
+              <span class="error">Champ requis.</span>
+            </div>
+            <div class="field">
+              <label for="commandes">Combien de commandes réalisez-vous actuellement ? <span class="req">*</span></label>
+              <input type="text" id="commandes" name="commandes" placeholder="Ex. 20 / mois" required />
+              <span class="error">Champ requis.</span>
+            </div>
+            <div class="field">
+              <label for="meta_ads">Utilisez-vous déjà Meta Ads ? <span class="req">*</span></label>
+              <select id="meta_ads" name="meta_ads" required>
+                <option value="" disabled selected>Sélectionnez…</option>
+                <option value="non">Non, jamais</option>
+                <option value="essaye">J'ai déjà essayé seul</option>
+                <option value="oui-agence">Oui, avec une agence / freelance</option>
+                <option value="oui-actif">Oui, campagnes actives en ce moment</option>
+              </select>
+              <span class="error">Veuillez faire un choix.</span>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn--ghost" data-prev>Précédent</button>
+            <button type="button" class="btn btn--primary" data-next>Continuer
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.1em;height:1.1em"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 3 — OBJECTIFS -->
+        <div class="form-step" data-step="3">
+          <h2>Vos objectifs</h2>
+          <p class="form-intro">Que souhaitez-vous obtenir ? Plusieurs choix possibles.</p>
+          <div class="choice-grid" role="group" aria-label="Objectifs">
+            <label class="choice">
+              <input type="checkbox" name="objectifs" value="Augmenter les ventes" />
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></i>
+              <span>Augmenter les ventes</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="objectifs" value="Plus de commandes WhatsApp" />
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></i>
+              <span>Plus de commandes WhatsApp</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="objectifs" value="Développer votre e-commerce" />
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></i>
+              <span>Développer votre e-commerce</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="objectifs" value="Lancer un nouveau produit" />
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></i>
+              <span>Lancer un nouveau produit</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="objectifs" value="Autre" />
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></i>
+              <span>Autre</span>
+            </label>
+          </div>
+          <p class="error" id="objErr" style="margin-top:1rem">Sélectionnez au moins un objectif.</p>
+
+          <div class="field field--full" style="margin-top:2rem">
+            <label for="pack">Quel pack vous intéresse ? <span class="req">*</span></label>
+            <select id="pack" name="pack" required>
+              <option value="" disabled selected>Sélectionnez…</option>
+              <option value="starter">Starter — 350 000 FCFA</option>
+              <option value="growth">Growth — 500 000 FCFA</option>
+              <option value="scale">Scale — 1 000 000 FCFA</option>
+              <option value="conseil">Je souhaite être conseillé(e)</option>
+            </select>
+            <span class="error">Veuillez choisir un pack.</span>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn--ghost" data-prev>Précédent</button>
+            <button type="button" class="btn btn--primary" data-next>Continuer
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.1em;height:1.1em"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 4 — PRÉSENTATION OBLIGATOIRE -->
+        <div class="form-step" data-step="4">
+          <h2>Présentez votre entreprise</h2>
+          <p class="form-intro">Cette partie est obligatoire avant toute prise de contact. Plus votre présentation est claire, plus votre dossier a de chances d'être retenu.</p>
+
+          <div class="field field--full">
+            <label for="presentation">Votre présentation <span class="req">*</span></label>
+            <span class="hint" style="margin-bottom:.6rem">Expliquez : votre activité · vos produits · votre marché · vos difficultés · vos attentes · pourquoi vous souhaitez travailler avec Sellvora.</span>
+            <textarea id="presentation" name="presentation" minlength="200" required
+              placeholder="Présentez votre entreprise, vos produits, votre marché, les difficultés que vous rencontrez, ce que vous attendez de nous et pourquoi vous souhaitez travailler avec Sellvora…"></textarea>
+            <div class="char-count" id="charCount">0 caractère · minimum 200</div>
+            <span class="error">Merci de rédiger une présentation d'au moins 200 caractères.</span>
+          </div>
+
+          <label class="choice field--full" style="margin-top:1.5rem">
+            <input type="checkbox" id="consent" name="consent" required />
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></i>
+            <span>J'accepte que Sellvora traite ces informations pour étudier ma candidature, conformément à la politique de confidentialité.</span>
+          </label>
+          <p class="error" id="consentErr">Vous devez accepter pour envoyer votre candidature.</p>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn--ghost" data-prev>Précédent</button>
+            <button type="submit" class="btn btn--blue" id="submitBtn">Envoyer ma candidature
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.1em;height:1.1em"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- CONFIRMATION -->
+      <section class="form-card confirm" id="confirmation" hidden>
+        <div class="confirm__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <h2>Merci.</h2>
+        <p class="highlight">Votre candidature a bien été reçue.</p>
+        <p>Notre équipe étudiera votre dossier avec attention. Nous sélectionnons uniquement les entreprises avec lesquelles nous pensons pouvoir construire une collaboration durable.</p>
+        <p>Si votre candidature est retenue, nous vous contacterons sur WhatsApp sous <span class="highlight">24 à 48 heures</span>.</p>
+        <a href="index.html" class="btn btn--primary">Retour à l'accueil</a>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/apply.js" defer></script>
+</body>
+</html>
