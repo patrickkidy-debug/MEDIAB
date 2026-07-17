@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — Sellvora</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .admin-wrap { width: min(1160px, 100% - 3rem); margin-inline: auto; padding-block: 2.5rem 4rem; }
+    .admin-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .admin-head img { height: 3.4rem; }
+    .admin-head h1 { font-size: var(--text-2xl); }
+    .admin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .admin-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.4rem; display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .admin-card h3 { font-size: var(--text-base); }
+    .admin-card p { font-size: var(--text-sm); color: var(--ink-soft); flex-grow: 1; }
+    .admin-card .btn { align-self: flex-start; }
+    .admin-frame {
+      width: 100%; height: 78vh; border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: #fff;
+    }
+    .admin-note {
+      background: var(--blue-soft); border: 1px solid var(--blue-border); border-radius: var(--radius);
+      padding: 1.2rem 1.4rem; font-size: var(--text-sm); color: var(--ink); margin-bottom: 2rem;
+    }
+    .admin-note ol { list-style: decimal; padding-left: 1.3rem; display: grid; gap: 0.35rem; margin-top: 0.5rem; }
+    .admin-note code { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 0.1rem 0.4rem; font-size: 0.85em; }
+    #gate { min-height: 100dvh; display: grid; place-items: center; background: var(--paper-soft); }
+    .gate-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md); padding: 2.5rem; width: min(400px, 90vw); text-align: center;
+    }
+    .gate-card img { height: 4rem; margin: 0 auto 1rem; }
+    .gate-card h1 { font-size: var(--text-xl); margin-bottom: 1.2rem; }
+    .gate-card input {
+      width: 100%; font: inherit; padding: 0.8rem 1rem; border: 1px solid var(--border-strong);
+      border-radius: 10px; margin-bottom: 0.8rem; text-align: center;
+    }
+    .gate-card input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12); }
+    .gate-card .btn { width: 100%; }
+    .gate-err { color: #b91c1c; font-size: var(--text-xs); margin-top: 0.6rem; display: none; }
+    @media (max-width: 768px) { .admin-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- Porte d'entrée (protection légère côté navigateur : dissuasif, pas un coffre-fort.
+       Les données affichées viennent de services déjà protégés par leurs propres comptes.) -->
+  <div id="gate">
+    <form class="gate-card" id="gateForm">
+      <img src="images/logo.png" alt="Sellvora" />
+      <h1>Espace admin</h1>
+      <input type="password" id="gatePass" placeholder="Code d'accès" autocomplete="current-password" />
+      <button type="submit" class="btn btn--primary">Entrer</button>
+      <p class="gate-err" id="gateErr">Code incorrect.</p>
+    </form>
+  </div>
+
+  <!-- Tableau de bord -->
+  <div id="dashboard" hidden>
+    <div class="admin-wrap">
+      <div class="admin-head">
+        <img src="images/logo.png" alt="Sellvora" />
+        <h1>Tableau de bord</h1>
+        <a href="index.html" class="btn btn--ghost">Voir le site</a>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h3>Statistiques détaillées</h3>
+          <p>Visites, pages vues, sources de trafic, pays, appareils, clics WhatsApp, clics packs, candidatures envoyées.</p>
+          <a href="https://cloud.umami.is" target="_blank" rel="noopener" class="btn btn--primary">Ouvrir Umami</a>
+        </div>
+        <div class="admin-card">
+          <h3>Candidatures reçues</h3>
+          <p>Chaque dossier de candidature arrive par email avec le sujet « Nouvelle candidature Sellvora ».</p>
+          <a href="https://mail.google.com/mail/u/0/#search/%22Nouvelle+candidature+Sellvora%22" target="_blank" rel="noopener" class="btn btn--primary">Ouvrir Gmail</a>
+        </div>
+        <div class="admin-card">
+          <h3>Code du site</h3>
+          <p>Dépôt GitHub du site : historique des modifications et hébergement GitHub Pages.</p>
+          <a href="https://github.com/patrickkidy-debug/MEDIAB" target="_blank" rel="noopener" class="btn btn--primary">Ouvrir GitHub</a>
+        </div>
+      </div>
+
+      <div class="admin-note" id="setupNote">
+        <strong>Configuration Umami (une seule fois) :</strong>
+        <ol>
+          <li>Crée un compte gratuit sur <a href="https://cloud.umami.is/signup" target="_blank" rel="noopener"><strong>cloud.umami.is</strong></a></li>
+          <li>Ajoute un site : <em>Settings → Websites → Add website</em> (domaine : <code>patrickkidy-debug.github.io</code>)</li>
+          <li>Copie le <strong>Website ID</strong> et colle-le dans <code>js/analytics.js</code> (ligne UMAMI_WEBSITE_ID)</li>
+          <li>Pour afficher le dashboard ici : <em>Edit → Enable share URL</em>, copie l'adresse et colle-la ci-dessous dans <code>admin.html</code> (ligne UMAMI_SHARE_URL)</li>
+        </ol>
+      </div>
+
+      <iframe id="umamiFrame" class="admin-frame" title="Statistiques Umami" hidden></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ===== À CONFIGURER ===== */
+      var ACCESS_CODE = "sellvora2026";   /* ← change ce code d'accès */
+      var UMAMI_SHARE_URL = "";           /* ← coller l'URL de partage Umami ici, ex: "https://cloud.umami.is/share/xxxx/site" */
+
+      var gate = document.getElementById("gate");
+      var dashboard = document.getElementById("dashboard");
+      var gateForm = document.getElementById("gateForm");
+      var gateErr = document.getElementById("gateErr");
+
+      function unlock() {
+        gate.hidden = true;
+        dashboard.hidden = false;
+        var frame = document.getElementById("umamiFrame");
+        var note = document.getElementById("setupNote");
+        if (UMAMI_SHARE_URL) {
+          frame.src = UMAMI_SHARE_URL;
+          frame.hidden = false;
+          if (note) note.hidden = true;
+        }
+      }
+
+      if (sessionStorage.getItem("sellvora_admin") === "1") unlock();
+
+      gateForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var val = document.getElementById("gatePass").value;
+        if (val === ACCESS_CODE) {
+          sessionStorage.setItem("sellvora_admin", "1");
+          unlock();
+        } else {
+          gateErr.style.display = "block";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

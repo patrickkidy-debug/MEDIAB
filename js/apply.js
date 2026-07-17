@@ -169,6 +169,9 @@
         return res.json();
       })
       .then(function () {
+        if (window.umami) {
+          window.umami.track("candidature-envoyee", { pack: String(data.get("pack") || "") });
+        }
         showConfirmation();
       })
       .catch(function () {
